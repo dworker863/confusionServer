@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const session = require('express-session');
-const FileStore = require('session-file-store')(session);
 const passport = require('passport');
 const config = require('./config');
 
@@ -34,6 +33,17 @@ connect
   });
 
 const app = express();
+
+app.all('*', (req, res, next) => {
+  if (req.secure) {
+    return next();
+  } else {
+    res.redirect(
+      307,
+      'https://' + req.hostname + ':' + app.get('secPort') + req.url,
+    );
+  }
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
