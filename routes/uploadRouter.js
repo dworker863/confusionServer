@@ -29,7 +29,7 @@ uploadRouter.use(bodyParser.json());
 
 uploadRouter
   .route('/')
-  .options(cors.corsWithOprions, (req, res) => {
+  .options(cors.corsWithOptions, (req, res) => {
     res.sendStatus = 200;
   })
   .get(
@@ -42,7 +42,7 @@ uploadRouter
     },
   )
   .post(
-    cors.corsWithOprions,
+    cors.corsWithOptions,
     authenticate.verifyUser,
     authenticate.verifyAdmin,
     upload.single('imageFile'),
@@ -54,7 +54,7 @@ uploadRouter
     },
   )
   .put(
-    cors.corsWithOprions,
+    cors.corsWithOptions,
     authenticate.verifyUser,
     authenticate.verifyAdmin,
     (req, res) => {
@@ -63,7 +63,7 @@ uploadRouter
     },
   )
   .delete(
-    cors.corsWithOprions,
+    cors.corsWithOptions,
     authenticate.verifyUser,
     authenticate.verifyAdmin,
     (req, res) => {

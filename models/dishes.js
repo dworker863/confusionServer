@@ -29,11 +29,11 @@ const dishSchema = new Schema(
     },
     image: {
       type: String,
-      require: true,
+      required: true,
     },
     category: {
       type: String,
-      require: true,
+      required: true,
     },
     label: {
       type: String,
@@ -41,7 +41,7 @@ const dishSchema = new Schema(
     },
     price: {
       type: Currency,
-      require: true,
+      required: true,
       min: 0,
     },
     featured: {

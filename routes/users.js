@@ -12,7 +12,7 @@ router.use(bodyParser.json());
 /* GET users listing. */
 router.get(
   '/',
-  cors.corsWithOprions,
+  cors.corsWithOptions,
   authenticate.verifyUser,
   authenticate.verifyAdmin,
   (req, res, next) => {
@@ -24,7 +24,7 @@ router.get(
   },
 );
 
-router.post('/signup', cors.corsWithOprions, (req, res, next) => {
+router.post('/signup', cors.corsWithOptions, (req, res, next) => {
   User.register(
     new User({ username: req.body.username }),
     req.body.password,
@@ -60,7 +60,7 @@ router.post('/signup', cors.corsWithOprions, (req, res, next) => {
 
 router.post(
   '/login',
-  cors.corsWithOprions,
+  cors.corsWithOptions,
   passport.authenticate('local'),
   (req, res) => {
     const token = authenticate.getToken({ _id: req.user._id });
@@ -74,7 +74,7 @@ router.post(
   },
 );
 
-router.get('/logout', cors.corsWithOprions, (req, res) => {
+router.get('/logout', cors.corsWithOptions, (req, res) => {
   if (req.session) {
     req.session.destroy();
     res.clearCookie('session-id');

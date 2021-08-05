@@ -11,7 +11,7 @@ leaderRouter.use(bodyParser.json());
 
 leaderRouter
   .route('/')
-  .options(cors.corsWithOprions, (req, res) => {
+  .options(cors.corsWithOptions, (req, res) => {
     res.sendStatus = 200;
   })
   .get(cors.cors, (req, res, next) => {
@@ -32,7 +32,7 @@ leaderRouter
   })
 
   .post(
-    cors.corsWithOprions,
+    cors.corsWithOptions,
     authenticate.verifyUser,
     authenticate.verifyAdmin,
     (req, res, next) => {
@@ -55,7 +55,7 @@ leaderRouter
   )
 
   .put(
-    cors.corsWithOprions,
+    cors.corsWithOptions,
     authenticate.verifyUser,
     authenticate.verifyAdmin,
     (req, res) => {
@@ -65,7 +65,7 @@ leaderRouter
   )
 
   .delete(
-    cors.corsWithOprions,
+    cors.corsWithOptions,
     authenticate.verifyUser,
     authenticate.verifyAdmin,
     (req, res, next) => {
@@ -88,7 +88,7 @@ leaderRouter
 
 leaderRouter
   .route('/:leaderId')
-  .options(cors.corsWithOprions, (req, res) => {
+  .options(cors.corsWithOptions, (req, res) => {
     res.sendStatus = 200;
   })
   .get(cors.cors, (req, res) => {
@@ -109,7 +109,7 @@ leaderRouter
   })
 
   .post(
-    cors.corsWithOprions,
+    cors.corsWithOptions,
     authenticate.verifyUser,
     authenticate.verifyAdmin,
     (req, res) => {
@@ -121,7 +121,7 @@ leaderRouter
   )
 
   .put(
-    cors.corsWithOprions,
+    cors.corsWithOptions,
     authenticate.verifyUser,
     authenticate.verifyAdmin,
     (req, res, next) => {
@@ -142,7 +142,7 @@ leaderRouter
   )
 
   .delete(
-    cors.corsWithOprions,
+    cors.corsWithOptions,
     authenticate.verifyUser,
     authenticate.verifyAdmin,
     (req, res, next) => {
